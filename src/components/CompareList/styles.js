@@ -38,6 +38,22 @@ export const Repository = styled.div`
     }
   }
 
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      border-radius: 3px;
+      width: 30px;
+      background-color: #63f5b8;
+      color: #000;
+      border-width: 1px;
+      border-color: #000;
+      margin: 3px 2px;
+    }
+  }
+
   ul {
     list-style: none;
 

@@ -3,16 +3,12 @@ import PropTypes from "prop-types";
 
 import { Container, Repository } from "./styles.js";
 
-const CompareList = ({ repositories }) => (
+const CompareList = ({ repositories, removeRepo, attRepo }) => (
   <Container>
     {repositories.map(repository => (
       <Repository key={repository.id}>
         <header>
-          <img
-            src={repository.owner.avatar_url}
-            alt={repository.owner.login}
-            alt="facebook"
-          />
+          <img src={repository.owner.avatar_url} alt={repository.owner.login} />
           <strong>{repository.name}</strong>
           <small>{repository.owner.login}</small>
         </header>
@@ -28,9 +24,19 @@ const CompareList = ({ repositories }) => (
             {repository.open_issues_count} <small>issues</small>
           </li>
           <li>
-            {repository.pushed_at} <small>last commit</small>
+            {repository.lastCommit} <small>last commit</small>
           </li>
         </ul>
+        <div>
+          <button
+            className={"fa fa-trash"}
+            onClick={() => removeRepo(repository.id)}
+          />
+          <button
+            className={"fa fa-refresh"}
+            onClick={() => attRepo(repository.full_name)}
+          />
+        </div>
       </Repository>
     ))}
   </Container>
